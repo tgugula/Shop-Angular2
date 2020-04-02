@@ -1,0 +1,32 @@
+  <h2>Produkty</h2>
+  <table class="uk-table uk-table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nazwa</th>
+      <th>Cena</th>
+      <th>Ilość</th>
+      <th>Dostęność</th>
+      <th>Akcje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products; let i = index">
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td >{{product.price}}</td>
+      <td >{{product.quantity}}</td>
+      <td>
+        <span [attr.uk-icon]="product.available ? 'check' : 'close'"></span>
+      </td>
+      <td style="width: 250px">
+        <a routerLink="editor/{{product.id}}"><input class = "uk-button uk-button-primary" value="Edytuj" type="button"></a>
+        <a (click)="removeProduct(product.id)"><input class = "uk-button uk-button-danger" value="Usuń" type="button"></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <a routerLink="editor"><input style="background-color: #32d296; color: white" class="uk-button" value="Dodaj produkt" type="button"></a>
+  </div>
